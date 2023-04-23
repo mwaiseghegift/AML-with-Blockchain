@@ -135,4 +135,4 @@ STATICFILES_DIRS = [
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-ETHEREUM_NODE_URL = config('ETHEREUM_NODE_URL')
+ETHEREUM_NODE_URL = config('ethereum_infura_endpoint')
