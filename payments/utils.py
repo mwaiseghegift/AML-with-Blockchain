@@ -54,17 +54,19 @@ def get_latest_transactions():
         block = w3.eth.get_block(block_number)
         for transaction in block.transactions:
             tx = w3.eth.get_transaction(transaction.hex())
-            print(tx)
             sender = tx['from']
             receiver = tx['to']
             value = w3.from_wei(tx['value'], 'ether')
             timestamp = w3.eth.get_block(block_number)['timestamp']
-            EthereumTransaction.objects.create(
-                sender=sender,
-                receiver=receiver,
-                value=value,
-                timestamp=timestamp,
-            )
+            try:
+                EthereumTransaction.objects.create(
+                    sender=sender,
+                    receiver=receiver,
+                    value=value,
+                    timestamp=timestamp,
+                )
+            except:
+                pass
             transactions.append({
                 'sender': sender,
                 'receiver': receiver,
