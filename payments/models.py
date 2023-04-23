@@ -10,3 +10,4 @@ class EthereumTransaction(models.Model):
 
     def __str__(self):
         return f'{self.sender} sent {self.value} ETH to {self.receiver} at {self.timestamp}'
+
