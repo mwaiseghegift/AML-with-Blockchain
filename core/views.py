@@ -4,3 +4,6 @@ from django.shortcuts import render
 
 def IndexView(request):
     return render(request, "index.html")
+
+def Dashboard(request):
+    return render(request, 'dashboard.html')
