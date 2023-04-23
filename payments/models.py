@@ -8,6 +8,11 @@ class EthereumTransaction(models.Model):
     value = models.FloatField()
     timestamp = models.DateTimeField(auto_now_add=True)
 
+    class Meta:
+        ordering = ['-timestamp']
+        db_table = 'ethereum_transactions'
+        
+
     def __str__(self):
         return f'{self.sender} sent {self.value} ETH to {self.receiver} at {self.timestamp}'
 

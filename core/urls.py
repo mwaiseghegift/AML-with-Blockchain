@@ -5,5 +5,5 @@ app_name = "core"
 
 urlpatterns = [
     path("", IndexView, name="index"),
-    path('dashboard/', Dashboard, name='dashboard')
-] 
+    path('dashboard/', Dashboard, name='dashboard'),
+]

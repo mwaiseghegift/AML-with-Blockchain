@@ -1,0 +1,10 @@
+<!-- templates/transaction_list.html -->
+
+{% extends 'base.html' %} {% block content %}
+<h1>Ethereum Transactions</h1>
+<ul>
+  {% for transaction in transactions %}
+  <li>{{ transaction }}</li>
+  {% endfor %}
+</ul>
+{% endblock %}
