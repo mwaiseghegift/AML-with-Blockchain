@@ -17,7 +17,6 @@ def transaction_list(request):
 
 def transactions(request):
     transactions = EthereumTransaction.objects.order_by('-timestamp')
-    contract_address = deploy_anti_money_laundering_contract()
     # pagination
     paginator = Paginator(transactions, 100)
     page = request.GET.get('page')
@@ -25,7 +24,6 @@ def transactions(request):
 
     context = {
         'transactions': transactions,
-        'contract_address': contract_address,
     }
 
     return render(request, 'transactions.html', context)
