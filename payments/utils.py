@@ -4,6 +4,8 @@ from web3 import Web3
 from .models import EthereumTransaction
 from django.conf import settings
 
+w3 = Web3(Web3.HTTPProvider(settings.ETHEREUM_NODE_URL))
+
 def get_latest_transactions():
     # Connect to Ethereum network using an Ethereum node URL
     w3 = Web3(Web3.HTTPProvider(settings.ETHEREUM_NODE_URL))
@@ -42,3 +44,8 @@ def get_latest_transactions():
 
     # Return the transactions
     return transactions
+
+
+def get_smart_contract():
+    # Connect to Ethereum network using an Ethereum node URL
+    
