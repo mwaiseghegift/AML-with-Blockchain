@@ -1,3 +1,4 @@
+
 {% load static %}
 
 <ul class="menu-list flex-grow-1 mt-4 px-1">
@@ -11,7 +12,7 @@
         </a>
     </li>
     <li>
-        <a class="m-link" href="exchange.html">
+        <a class="m-link" href="{% url 'payments:transactions-list' %}">
             <svg xmlns="http://www.w3.org/2000/svg"  x="0px" y="0px" width="24px" height="24px" viewBox="0 0 38 38">
                 <path xmlns="http://www.w3.org/2000/svg" d="M20,25c0-1.698,0-6.334,0-11c0-4.418-1.582-8-6-8c-2.083,0-4.072,0.888-5.538,2.335  C5.708,11.053,4,14.826,4,19c0,8.284,6.716,15,15,15c2.736,0,5.294-0.745,7.503-2.025C22.87,31.719,20,28.698,20,25z" style="fill:var(--primary-color);" data-st="fill:var(--chart-color4);"></path>
                 <path xmlns="http://www.w3.org/2000/svg" class="st0" d="M15,11l-1,0.01c0,0,0,0,0-0.01H15z M22,0.24v2.04C29.95,3.69,36,10.65,36,19c0,4.17-1.52,8.01-4.03,10.97  l-0.02-0.02C30.68,31.22,28.93,32,27,32c-2.79,0-5.2-1.64-6.32-4H24l2-2h-5.92C20.02,25.67,20,25.34,20,25s0.02-0.67,0.08-1H28l2-2  h-9.32c1.12-2.36,3.53-4,6.32-4c1.93,0,3.68,0.78,4.95,2.05l1.41-1.41C31.73,17.01,29.48,16,27,16c-3.91,0-7.25,2.51-8.48,6H16v2  h2.06C18.02,24.33,18,24.66,18,25s0.02,0.67,0.06,1H16v2h2.52c1.23,3.48,4.56,5.99,8.46,6C24.6,35.28,21.88,36,19,36  C9.63,36,2,28.37,2,19c0-6.07,3.2-11.41,8-14.41V6.1C8.24,6.44,6,7.72,6,11c0,2.78,2.64,3.44,4.76,3.97C12.96,15.52,14,15.9,14,17  c0,2.82-2.5,2.99-2.99,3C10.5,19.99,8,19.82,8,17H6c0,3.28,2.24,4.56,4,4.9V24h2v-2.1c1.76-0.341,4-1.62,4-4.9  c0-2.78-2.64-3.44-4.76-3.97C9.04,12.48,8,12.1,8,11c0-2.82,2.5-2.99,3-3c2.81,0,2.99,2.48,3,3h2c0-1.57-0.86-4.42-4-4.91V3.52  C14.13,2.54,16.51,2,19,2c0.34,0,0.67,0.01,1,0.03V0.02C19.67,0.01,19.33,0,19,0C8.52,0,0,8.52,0,19c0,10.48,8.52,19,19,19  c10.48,0,19-8.52,19-19C38,9.54,31.06,1.68,22,0.24z"></path>
@@ -186,55 +187,17 @@
         <div><h6 class="mb-0">Super Admin</h6><small class="text-muted"></small></div> <span class="ms-auto text-end fs-5"></span></a>
 
     </li>
-    <li class="divider mt-4 py-2 border-top text-uppercase"><small>Ready UI</small></li>
+    <li class="divider mt-4 py-2 border-top text-uppercase"><small>Authentication</small></li>
+    
     <li class="collapsed">
-        <a class="" href="#" target="_blank">
-            <svg xmlns="http://www.w3.org/2000/svg"  x="0px" y="0px" width="24px" height="20px" viewBox="0 0 32 32">
-                <path d="M2,0v32h28V0H2z M28,30H4V2h24V30z" style="fill:var(--primary-color);"></path>
-                <path d="M19,8V4H6v10h20V8H19z M8,6h9v2H8V6z M24,12H8v-2h16V12z" style="fill:var(--svg-color);"></path>
-                <path d="M19,20v-4H6v10h20v-6H19z M8,18h9v2H8V18z M24,24H8v-2h16V24z" style="fill:var(--svg-color);"></path>
-            </svg>
-            <div><h6 class="mb-0">Form Input</h6><small class="text-muted">Form Example</small></div> <span class="ms-auto text-end fs-5"></span></a>
-        <!-- Menu: Sub menu ul -->
-        <ul class="sub-menu collapse" id="form">
-            <li><a class="ms-link" href="form-bootstrap.html">Bootstrap Form</a></li>
-            <li><a class="ms-link" href="form-custome.html">Custome Form</a></li>
-            
-            <li><a class="ms-link" href="form-wizard.html">Wizard Form</a></li>
-            <li><a class="ms-link" href="form-inputmask.html">Inputmask Form</a></li>
-        </ul>
-    </li>
-    <li class="collapsed">
-        <a class="m-link" data-bs-toggle="collapse" data-bs-target="#font" href="#">
+        <a class="m-link"  href="{% url 'accounts:logout' %}">
             <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 38 38"  width="24px" height="24px">
                 <polygon   points="22,19.4 22,30 10,30 10,10 30,10 30,27.4" style="fill:var(--primary-color);" data-st="fill:var(--chart-color4);"></polygon>
                 <path class="st0" d="M28.3,37.5l-2.7-6.7L20,36.4V14.6l8,8V6H6v22h12v2H6c-1.1,0-2-0.9-2-2V6c0-1.1,0.9-2,2-2h22c1.1,0,2,0.9,2,2  v18.6l5.4,5.4h-7.9l2.7,6.7L28.3,37.5z M22,19.4v12.2l3.6-3.6h5L22,19.4z"></path>
             </svg> 
-        <div><h6 class="mb-0">Font Icon</h6><small class="text-muted">Icon Example</small></div> <span class="arrow icofont-rounded-down ms-auto text-end fs-5"></span></a>
-        <!-- Menu: Sub menu ul -->
-        <ul class="sub-menu collapse" id="font">
-            <li><a class="ms-link" href="icon-iconfont.html">Icofont Icon</a></li>
-            <li><a class="ms-link" href="icon-bootstrap.html"> Bootstrap Icon</a></li>
-            <li><a class="ms-link" href="icon-fontawesome.html"> Font-Awesome Icon</a></li>
-        </ul>
+        <div><h6 class="mb-0">Logout</h6><small class="text-muted"></small></div> <span class="ms-auto text-end fs-5"></span></a>
+        
     </li>
-    <li class="collapsed">
-        <a class="m-link" data-bs-toggle="collapse" data-bs-target="#widget" href="#">
-            <svg xmlns="http://www.w3.org/2000/svg"  x="0px" y="0px" width="24px" height="24px" viewBox="0 0 32 32">
-                <path  d="M15.5,13.5c-1.65,0-3,1.35-3,3c0,1.65,1.35,3,3,3c1.65,0,3-1.35,3-3  C18.5,14.85,17.15,13.5,15.5,13.5z M15.5,13.5c-1.65,0-3,1.35-3,3c0,1.65,1.35,3,3,3c1.65,0,3-1.35,3-3  C18.5,14.85,17.15,13.5,15.5,13.5z M15.5,4.5c-6.62,0-12,5.38-12,12s5.38,12,12,12s12-5.38,12-12S22.12,4.5,15.5,4.5z M15.5,24.5  c-4.41,0-8-3.59-8-8s3.59-8,8-8s8,3.59,8,8S19.91,24.5,15.5,24.5z M15.5,13.5c-1.65,0-3,1.35-3,3c0,1.65,1.35,3,3,3  c1.65,0,3-1.35,3-3C18.5,14.85,17.15,13.5,15.5,13.5z" style="fill:var(--primary-color);" data-st="fill:var(--chart-color4);"></path>
-                <path class="st2" d="M15.5,8.5c-4.41,0-8,3.59-8,8s3.59,8,8,8s8-3.59,8-8S19.91,8.5,15.5,8.5z M15.5,19.5c-1.65,0-3-1.35-3-3  c0-1.65,1.35-3,3-3c1.65,0,3,1.35,3,3C18.5,18.15,17.15,19.5,15.5,19.5z" style="fill:#FFFFFF;;"></path>
-                <path class="st0" d="M15.5,4C8.6,4,3,9.6,3,16.5C3,23.4,8.6,29,15.5,29C22.4,29,28,23.4,28,16.5C28,9.6,22.4,4,15.5,4z M15.5,28  C9.16,28,4,22.84,4,16.5S9.16,5,15.5,5S27,10.16,27,16.5S21.84,28,15.5,28z M15.5,8C10.81,8,7,11.81,7,16.5  c0,4.689,3.81,8.5,8.5,8.5c4.689,0,8.5-3.811,8.5-8.5C24,11.81,20.189,8,15.5,8z M15.5,24C11.36,24,8,20.641,8,16.5  C8,12.36,11.36,9,15.5,9c4.141,0,7.5,3.36,7.5,7.5C23,20.641,19.641,24,15.5,24z M15.5,13c-1.93,0-3.5,1.57-3.5,3.5  c0,1.93,1.57,3.5,3.5,3.5c1.93,0,3.5-1.57,3.5-3.5C19,14.57,17.43,13,15.5,13z M15.5,19c-1.38,0-2.5-1.12-2.5-2.5s1.12-2.5,2.5-2.5  s2.5,1.12,2.5,2.5S16.88,19,15.5,19z" style="fill:#4D5152;;"></path>
-            </svg>
-        <div><h6 class="mb-0">Widget</h6><small class="text-muted">Pages, Table, Chart</small></div> <span class="arrow icofont-rounded-down ms-auto text-end fs-5"></span></a>
-        <!-- Menu: Sub menu ul -->
-        <ul class="sub-menu collapse" id="widget">
-            <li><a class="ms-link" href="widget-example.html">Widget Example</a></li>
-            <li><a class="ms-link" href="apexchart.html">Apex Chart</a></li>
-            <li><a class="ms-link" href="priceplan.html"> Price Plan</a></li>
-            <li><a class="ms-link" href="profile.html"> Profile Page</a></li>
-            <li><a class="ms-link" href="table.html"> Tables</a></li>
-            <li><a class="ms-link" href="todo-list.html"> Todo-List</a></li>
-            <li><a class="ms-link" href="support-ticket.html"> Support-Ticket</a></li>
-        </ul>
-    </li>
+    
 </ul>
+    
