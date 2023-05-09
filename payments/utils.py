@@ -45,7 +45,18 @@ def get_latest_transactions():
     # Return the transactions
     return transactions
 
+# utils.py (continued)
+from .contracts import ANTI_MONEY_LAUNDERING_ABI, ANTI_MONEY_LAUNDERING_BYTECODE
 
-def get_smart_contract():
-    # Connect to Ethereum network using an Ethereum node URL
-    
+w3 = Web3(Web3.HTTPProvider(settings.ETHEREUM_NODE_URL))
+
+def deploy_anti_money_laundering_contract():
+    account = w3.eth.account.create()
+    contract = w3.eth.contract(abi=ANTI_MONEY_LAUNDERING_ABI, bytecode=ANTI_MONEY_LAUNDERING_BYTECODE)
+    tx_hash = contract.constructor().transact({
+        'from': account.address,
+        'gas': 1000000,
+    })
+    tx_receipt = w3.eth.waitForTransactionReceipt(tx_hash)
+    contract_address = tx_receipt.contractAddress
+    return contract_address
