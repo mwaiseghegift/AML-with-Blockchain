@@ -3,7 +3,7 @@
 
 <ul class="menu-list flex-grow-1 mt-4 px-1">
     <li>
-        <a class="m-link active" href="index.html">
+        <a class="m-link active" href="{% url 'core:dashboard' %}">
             <svg xmlns="http://www.w3.org/2000/svg"  x="0px" y="0px" width="24px" height="24px" viewBox="0 0 38 38">
                 <path xmlns="http://www.w3.org/2000/svg"  d="M34,18.756V34H22v-8h-6v8h-4V14.31l7-3.89L34,18.756z M34,16.472V6h-6v7.139L34,16.472z" style="fill:var(--primary-color);" data-st="fill:var(--chart-color4);"></path>
                 <path xmlns="http://www.w3.org/2000/svg" class="st0" d="M34,14.19V6h-6v2h4v5.08L19,5.86L0.51,16.13l0.98,1.74L19,8.14l17.51,9.73l0.98-1.74L34,14.19z M32,32h-8v-8H14  v8H6V17.653l-2,1.111V34h12v-8h6v8h12V18.764l-2-1.111V32z"></path>
@@ -196,6 +196,18 @@
                 <path class="st0" d="M28.3,37.5l-2.7-6.7L20,36.4V14.6l8,8V6H6v22h12v2H6c-1.1,0-2-0.9-2-2V6c0-1.1,0.9-2,2-2h22c1.1,0,2,0.9,2,2  v18.6l5.4,5.4h-7.9l2.7,6.7L28.3,37.5z M22,19.4v12.2l3.6-3.6h5L22,19.4z"></path>
             </svg> 
         <div><h6 class="mb-0">Logout</h6><small class="text-muted"></small></div> <span class="ms-auto text-end fs-5"></span></a>
+        
+        
+    </li>
+
+    <li class="collapsed">
+        <a class="m-link"  href="{% url 'payments:transactions' %}">
+            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 38 38"  width="24px" height="24px">
+                <polygon   points="22,19.4 22,30 10,30 10,10 30,10 30,27.4" style="fill:var(--primary-color);" data-st="fill:var(--chart-color4);"></polygon>
+                <path class="st0" d="M28.3,37.5l-2.7-6.7L20,36.4V14.6l8,8V6H6v22h12v2H6c-1.1,0-2-0.9-2-2V6c0-1.1,0.9-2,2-2h22c1.1,0,2,0.9,2,2  v18.6l5.4,5.4h-7.9l2.7,6.7L28.3,37.5z M22,19.4v12.2l3.6-3.6h5L22,19.4z"></path>
+            </svg> 
+        <div><h6 class="mb-0">Load Transactions</h6><small class="text-muted"></small></div> <span class="ms-auto text-end fs-5"></span></a>
+        
         
     </li>
     

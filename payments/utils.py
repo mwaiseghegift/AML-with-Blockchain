@@ -25,21 +25,37 @@ def get_latest_transactions():
             sender = tx['from']
             receiver = tx['to']
             value = w3.from_wei(tx['value'], 'ether')
-            timestamp = w3.eth.get_block(block_number)['timestamp']
-            try:
-                EthereumTransaction.objects.create(
-                    sender=sender,
-                    receiver=receiver,
-                    value=value,
-                    timestamp=timestamp,
-                )
-            except:
-                pass
+            gas_price = w3.from_wei(tx['gasPrice'], 'gwei')
+            gas_used = tx['gas']
+            block_number = tx['blockNumber']
+            transaction_fee = w3.from_wei(tx['gasPrice'] * tx['gas'], 'ether')
+            is_contract_creation = True if tx['to'] is None else False
+            eth_timestamp = w3.eth.get_block(block_number)['timestamp']
+            
+            EthereumTransaction.objects.create(
+                sender=sender,
+                receiver=receiver,
+                value=value,
+                eth_timestamp=eth_timestamp,
+                gas_price=gas_price,
+                gas_used=gas_used,
+                block_number=block_number,
+                transaction_fee=transaction_fee,
+                is_contract_creation=is_contract_creation,
+
+            )
+
             transactions.append({
                 'sender': sender,
                 'receiver': receiver,
                 'value': value,
                 'timestamp': timestamp,
+                'gas_price': gas_price,
+                'gas_used': gas_used,
+                'block_number': block_number,
+                'transaction_fee': transaction_fee,
+                'is_contract_creation': is_contract_creation,
+
             })
 
     # Return the transactions
