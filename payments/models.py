@@ -100,7 +100,7 @@ class AddressFrequency(models.Model):
     last_transaction = models.DateTimeField(auto_now_add=True)
 
     class Meta:
-        ordering = ['-last_transaction']
+        ordering = ['times_sender', 'times_receiver']
         db_table = 'frequent_addresses'
 
     def __str__(self):

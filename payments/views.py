@@ -50,7 +50,7 @@ def update_system_reports(request, *args, **kwargs):
     check_transactions()
 
     # check addresses that have appeared more than 5 times 
-    transactions = EthereumTransaction.objects.all(is_update_checked=False)
+    transactions = EthereumTransaction.objects.filter(is_update_checked=False)
 
     for transaction in transactions:
         address_frequency = transaction.get_or_create_frequency()
