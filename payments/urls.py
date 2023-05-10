@@ -8,5 +8,6 @@ urlpatterns = [
     path('transactions-list/', transactions, name='transactions-list'),
     path('latest-reports/', latest_reports, name='latest-reports'),
     path('update-system-reports/', update_system_reports, name='update-system-reports'),
+    path('top-addresses/', top_addresses, name='top-addresses'),
 
 ]

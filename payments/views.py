@@ -2,7 +2,7 @@
 
 from django.shortcuts import render, HttpResponseRedirect
 from django.urls import reverse
-from .models import EthereumTransaction, FlaggedTransaction, SuspiciousAddresses
+from .models import *
 from .utils import *
 from django.core.paginator import Paginator
 import pandas as pd
@@ -64,3 +64,13 @@ def update_system_reports(request, *args, **kwargs):
 
     
 
+def top_addresses(request):
+    top_senders = AddressFrequency.objects.order_by('-times_sender')[:10]
+    top_receivers = AddressFrequency.objects.order_by('-times_receiver')[:10]
+
+    context = {
+        'top_senders': top_senders,
+        'top_receivers': top_receivers,
+    }
+
+    return render(request, 'top_addresses.html', context)
