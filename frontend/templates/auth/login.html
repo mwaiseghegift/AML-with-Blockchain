@@ -12,62 +12,38 @@
                 <div class="d-flex flex-column">
                     <h1>Account Login</h1>
                     <span class="text-muted">Welcome back! Log In with your Email, Phone number or QR code</span>
-                    <ul class="nav nav-pills mt-4" role="tablist">
-                        <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab" href="#Email" role="tab">Email</a></li>
-                        <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#Mobile" role="tab">Mobile</a></li>
-                    </ul>
+                    
                     <div class="tab-content mt-4 mb-3">
                         <div class="tab-pane fade show active" id="Email">
                             <div class="card">
                                 <div class="card-body p-4">
-                                    <form>
+                                    <form method="POST" action="{% url 'accounts:login' %}">
+                                        {% csrf_token %}
                                         <div class="mb-3">
                                             <label class="form-label fs-6">Email address</label>
-                                            <input type="email" class="form-control">
+                                            {{ login_form.email }}
                                         </div>
                                         <div class="mb-3">
                                             <label class="form-label fs-6">Password</label>
-                                            <input type="password" class="form-control">
+                                            {{ login_form.password }}
                                         </div>
                                         <button type="submit" class="btn btn-primary text-uppercase py-2 fs-5 w-100 mt-2">log in</button>
                                     </form>
                                 </div>
                             </div>
                         </div>
-                        <div class="tab-pane fade" id="Mobile">
-                            <div class="card">
-                                <div class="card-body p-4">
-                                    <form>
-                                        <label class="form-label fs-6">Mobile</label>
-                                        <div class="input-group mb-3">
-                                            <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">+91 India</button>
-                                            <ul class="dropdown-menu">
-                                            <li><a class="dropdown-item" href="#">+376 Andora</a></li>
-                                            <li><a class="dropdown-item" href="#">+61 Australia</a></li>
-                                            <li><a class="dropdown-item" href="#">+55 Brazil</a></li>
-                                            </ul>
-                                            <input type="text" class="form-control">
-                                        </div>
-                                        <div class="mb-3">
-                                            <label class="form-label fs-6">Password</label>
-                                            <input type="password" class="form-control">
-                                        </div>
-                                        <button type="submit" class="btn btn-primary text-uppercase py-2 fs-5 w-100 mt-2">log in</button>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
+                        
                     </div>
-                    <a href="auth-password-reset.html" title="#" class="text-primary text-decoration-underline">Forgot password?</a>
-                    <a href="auth-signup.html" title="#" class="text-primary text-decoration-underline">Register now</a>
+                    <a href="#" title="#" class="text-primary text-decoration-underline">Forgot password?</a>
+                    <a href="{% url 'accounts:register' %}" title="#" class="text-primary text-decoration-underline">Register now</a>
                 </div>
             </div>
 
             <div class="col-lg-6 d-none d-lg-flex justify-content-center align-items-center auth-h100">
                 <div class="qr-block text-center">
-                    <img src="../assets/images/qr-code.png" alt="#" class="img-fluid my-4">
+                    <img src="{% static 'assets/images/qr-code.png' %}" alt="#" class="img-fluid my-4">
                     <h4>Log in with QR code</h4>
-                    <p>Scan this code with the <span class="text-primary">Cryptoon mobile app</span><br/> to log in instantly.</p>
+                    <p>Scan this code with to <span class="text-primary">Reach us</span><br/> for assistance.</p>
                 </div>
             </div>
         </div> <!-- End Row -->
