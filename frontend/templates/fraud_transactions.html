@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{% endblock title %}
+
+
+{% block body %}
+    
+    {% for transaction in fraudulent_transactions %}
+        {{ transaction }}
+    {% endfor %}
+        
+{% endblock body %}
+    

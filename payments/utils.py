@@ -32,6 +32,7 @@ def get_latest_transactions():
             is_contract_creation = True if tx['to'] is None else False
             eth_timestamp = w3.eth.get_block(block_number)['timestamp']
             
+            
             EthereumTransaction.objects.create(
                 sender=sender,
                 receiver=receiver,
@@ -49,13 +50,12 @@ def get_latest_transactions():
                 'sender': sender,
                 'receiver': receiver,
                 'value': value,
-                'timestamp': timestamp,
+                'timestamp': eth_timestamp,
                 'gas_price': gas_price,
                 'gas_used': gas_used,
                 'block_number': block_number,
                 'transaction_fee': transaction_fee,
                 'is_contract_creation': is_contract_creation,
-
             })
 
     # Return the transactions
