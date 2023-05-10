@@ -1,7 +1,7 @@
 # utils.py
 
 from web3 import Web3
-from .models import EthereumTransaction
+from .models import EthereumTransaction, FlaggedTransaction
 from django.conf import settings
 
 w3 = Web3(Web3.HTTPProvider(settings.ETHEREUM_NODE_URL))
@@ -33,7 +33,8 @@ def get_latest_transactions():
             eth_timestamp = w3.eth.get_block(block_number)['timestamp']
             
             
-            EthereumTransaction.objects.create(
+            try:
+                transaction = EthereumTransaction.objects.create(
                 sender=sender,
                 receiver=receiver,
                 value=value,
@@ -44,8 +45,20 @@ def get_latest_transactions():
                 transaction_fee=transaction_fee,
                 is_contract_creation=is_contract_creation,
 
-            )
+                )
 
+                if transaction.value > 100:
+                    FlaggedTransaction.objects.create(
+                        transaction=transaction,
+                        sender=sender,
+                        receiver=receiver,
+                        reason='1',
+                        is_flagged=True,
+                    )
+            except Exception as e:
+                print(e)
+                pass
+  
             transactions.append({
                 'sender': sender,
                 'receiver': receiver,
@@ -61,7 +74,8 @@ def get_latest_transactions():
     # Return the transactions
     return transactions
 
-# utils.py (continued)
+
+
 from .contracts import ANTI_MONEY_LAUNDERING_ABI, ANTI_MONEY_LAUNDERING_BYTECODE
 
 w3 = Web3(Web3.HTTPProvider(settings.ETHEREUM_NODE_URL))
@@ -76,3 +90,22 @@ def deploy_anti_money_laundering_contract():
     tx_receipt = w3.eth.waitForTransactionReceipt(tx_hash)
     contract_address = tx_receipt.contractAddress
     return contract_address
+
+
+
+def check_transactions():
+    transactions = EthereumTransaction.objects.filter(is_checked=False)
+    for transaction in transactions:
+        if transaction.value > 100:
+            FlaggedTransaction.objects.create(
+                transaction=transaction,
+                sender=transaction.sender,
+                receiver=transaction.receiver,
+                reason='1',
+                is_flagged=True,
+            )
+        transaction.is_checked = True
+        transaction.save()
+    return True
+
+
