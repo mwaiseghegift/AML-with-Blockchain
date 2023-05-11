@@ -107,3 +107,38 @@ class AddressFrequency(models.Model):
         return f'{self.address} has been used {self.times_sender} times as sender and {self.times_receiver} times as receiver'
 
 
+class WhitlistedAddresses(models.Model):
+    address = models.CharField(max_length=42)
+    timestamp = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['-timestamp']
+        db_table = 'whitelisted_addresses'
+
+    def __str__(self):
+        return f'{self.address} whitelisted at {self.timestamp}'
+    
+
+class BlacklistedAddresses(models.Model):
+    address = models.CharField(max_length=42)
+    timestamp = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['-timestamp']
+        db_table = 'blacklisted_addresses'
+
+    def __str__(self):
+        return f'{self.address} blacklisted at {self.timestamp}'
+    
+
+class SuspiciousTransactions(models.Model):
+    transaction = models.ForeignKey(EthereumTransaction, on_delete=models.CASCADE)
+    reason = models.CharField(max_length=50, choices=FLAGGED_REASON)
+    timestamp = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['-timestamp']
+        db_table = 'suspicious_transactions'
+
+    def __str__(self):
+        return f'{self.transaction} is suspicious because {self.reason} at {self.timestamp}'
