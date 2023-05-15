@@ -276,24 +276,20 @@
                                     <table  class="myProjectTable table table-hover custom-table align-middle mb-0" style="width:100%">
                                         <thead>
                                             <tr>
-                                                <th>Sender</th>
-                                                <th>Receiver</th>
-                                                <th>Value</th> 
+                                                <th>ID</th>
+                                                <th>Address</th>
                                                 <th>Time</th>  
                                                 <th>Reason</th> 
                                             </tr>
                                         </thead>
                                         <tbody>
                                             
-                                            {% for transaction in flagged_transactions %}
+                                            {% for add in latest_suspicious_addresses %}
                                                 <tr>
-                                                    <td><i class="px-2 fa-lg text-warning" aria-hidden="true"></i>  {{ transaction.sender }}</td>
-                                                    <td><i class="px-2 fa-lg text-warning" aria-hidden="true"></i>  {{ transaction.receiver }}</td>
-                                                    <td><span>{{ transaction.transaction.value }}</span> <span class="text-muted">/ $2.35</span></td>
-                                       
-                                                   
-                                                    <td>{{ transaction.transaction.timestamp }} </td>
-                                                    <td><a href="#" title="" class="text-secondary">{{transaction.reason}}</a></td>
+                                                    <td><i class="px-2 fa-lg text-warning" aria-hidden="true"></i>  {{ add.id }}</td>
+                                                    <td><i class="px-2 fa-lg text-warning" aria-hidden="true"></i>  {{ add.address }}</td>
+                                                    <td>{{ add.time }} </td>
+                                                    <td><a href="#" title="" class="text-secondary">{{add.reason}}</a></td>
                                                 </tr>
                                             {% endfor %}
                                                 
